@@ -100,7 +100,7 @@ namespace SpeedClick
                 txB.IsEnabled = true;
                 btgame.IsEnabled = true;
                 Menugame.IsEnabled = true;
-                newGame();
+                OffButtons();
             }
             this.Title = $"Прошло секунд {seconds}";
         }

@@ -1,0 +1,76 @@
+﻿<Window x:Class="SpeedClick.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedClick"
+        mc:Ignorable="d"
+        Title="TheGame" Height="480" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" VerticalAlignment="Top">
+            <MenuItem Header="Game" Name="Menugame"  Click="game_click"></MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" ></ColumnDefinition>
+                <ColumnDefinition Width="Auto" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Button.Click ="CheckRight" MinWidth="300">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button x:Name="bt1" IsEnabled="False" Grid.Column="0" Grid.Row="0" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt5" IsEnabled="False" Grid.Column="0" Grid.Row="1" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt9" IsEnabled="False" Grid.Column="0" Grid.Row="2" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt13" IsEnabled="False" Grid.Column="0" Grid.Row="3" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt2" IsEnabled="False" Grid.Column="1" Grid.Row="0" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt6" IsEnabled="False" Grid.Column="1" Grid.Row="1" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt10" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt14" IsEnabled="False" Grid.Column="1" Grid.Row="3" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt3" IsEnabled="False" Grid.Column="2" Grid.Row="0" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt7" IsEnabled="False" Grid.Column="2" Grid.Row="1" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt11" IsEnabled="False" Grid.Column="2" Grid.Row="2" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt15" IsEnabled="False" Grid.Column="2" Grid.Row="3" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt4" IsEnabled="False" Grid.Column="3" Grid.Row="0" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt8" IsEnabled="False" Grid.Column="3" Grid.Row="1" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt12" IsEnabled="False" Grid.Column="3" Grid.Row="2" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+                <Button x:Name="bt16" IsEnabled="False" Grid.Column="3" Grid.Row="3" Margin="7" MinHeight="50" MaxWidth="300" MinWidth="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+            </Grid>
+            <StackPanel Grid.Column="1">
+                <ListBox x:Name="listbox" Width="100" Height="250" Margin="10"></ListBox>
+                <Button x:Name="btgame" Margin="10" Click="Button_Click">New Game</Button>
+                <TextBlock Margin="20,5">Game timer</TextBlock>
+                <TextBox x:Name="txB" Margin="20,5" TextChanged="txB_TextChanged"></TextBox>
+                <Label Width="80">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Name="er1" Foreground="Red" FontWeight="Bold" FontSize="15" Visibility="Hidden">X</Label>
+                        <Label Name="er2" Foreground="Red" FontWeight="Bold" FontSize="15" Visibility="Hidden">X</Label>
+                        <Label Name="er3" Foreground="Red" FontWeight="Bold" FontSize="15" Visibility="Hidden">X</Label>
+                    </StackPanel>
+                </Label>
+            </StackPanel>
+        </Grid>
+        <ProgressBar x:Name="pb1" Grid.Row="2" Height="25" Value="0">
+            <ProgressBar.Foreground >
+                <LinearGradientBrush StartPoint="0.0,0.5" EndPoint="1.0,0.5">
+                    <GradientStop Color="Orange" Offset="0.0"></GradientStop>
+                    <GradientStop Color="Purple" Offset="1.0"></GradientStop>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+    </Grid>
+</Window>

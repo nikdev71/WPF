@@ -1,0 +1,54 @@
+﻿<Window x:Class="MyCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCalculator"
+        mc:Ignorable="d"
+        Title="MyCalculator" Height="450" Width="400" MinHeight="350" MinWidth="300" MaxHeight="700" MaxWidth="500" PreviewKeyDown="Window_PreviewKeyDown">
+    <DockPanel>
+        <DockPanel.Background>
+            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <GradientStop Color="Beige" Offset="0"></GradientStop>
+                <GradientStop Color="Gray" Offset="0.5"></GradientStop>
+                <GradientStop Color="DarkSlateGray" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </DockPanel.Background>
+        <TextBox Name="tx1" Margin="0,5,0,2" IsEnabled="False" DockPanel.Dock="Top" HorizontalContentAlignment="Right" ></TextBox>
+        <TextBox Name="tx2" Margin="0,2,0,5" Height="50" DockPanel.Dock="Top" HorizontalContentAlignment="Right" FontSize="36" FontWeight="Bold"></TextBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" Margin="5" FontSize="24" Click="Button_Click">CE</Button>
+            <Button Grid.Column="0" Grid.Row="1" Margin="5" FontSize="24" Click="btn_num">7</Button>
+            <Button Grid.Column="0" Grid.Row="2" Margin="5" FontSize="24" Click="btn_num">4</Button>
+            <Button Grid.Column="0" Grid.Row="3" Margin="5" FontSize="24" Click="btn_num">1</Button>
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" FontSize="24" Click="Button_Click_3">.</Button>
+            <Button Grid.Column="1" Grid.Row="0" Margin="5" FontSize="24" Click="Button_Click_2">C</Button>
+            <Button Grid.Column="1" Grid.Row="1" Margin="5" FontSize="24" Click="btn_num">8</Button>
+            <Button Grid.Column="1" Grid.Row="2" Margin="5" FontSize="24" Click="btn_num">5</Button>
+            <Button Grid.Column="1" Grid.Row="3" Margin="5" FontSize="24" Click="btn_num">2</Button>
+            <Button Grid.Column="1" Grid.Row="4" Margin="5" FontSize="24" Click="btn_num">0</Button>
+            <Button Grid.Column="2" Grid.Row="0" Margin="5" FontSize="24" Content="&#x3C;" Click="Button_Click_1"></Button>
+            <Button Grid.Column="2" Grid.Row="1" Margin="5" FontSize="24" Click="btn_num">9</Button>
+            <Button Grid.Column="2" Grid.Row="2" Margin="5" FontSize="24" Click="btn_num">6</Button>
+            <Button Grid.Column="2" Grid.Row="3" Margin="5" FontSize="24" Click="btn_num">3</Button>
+            <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" FontSize="24" Margin="5" Click="Button_Click_4">=</Button>
+            <Button Grid.Column="3" Grid.Row="0" Margin="5" FontSize="24" Click="Operation">/</Button>
+            <Button Grid.Column="3" Grid.Row="1" Margin="5" FontSize="24" Click="Operation">*</Button>
+            <Button Grid.Column="3" Grid.Row="2" Margin="5" FontSize="24" Click="Operation">-</Button>
+            <Button Grid.Column="3" Grid.Row="3" Margin="5" FontSize="24" Click="Operation">+</Button>
+        </Grid>
+    </DockPanel>
+</Window>

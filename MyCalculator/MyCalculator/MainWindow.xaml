@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyCalculator"
         mc:Ignorable="d"
-        Title="MyCalculator" Height="450" Width="400" MinHeight="350" MinWidth="300" MaxHeight="700" MaxWidth="500" PreviewKeyDown="Window_PreviewKeyDown">
+        Title="MyCalculator" Height="450" Width="400" MinHeight="350" MinWidth="300" PreviewKeyDown="Window_PreviewKeyDown">
     <DockPanel>
         <DockPanel.Background>
             <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">

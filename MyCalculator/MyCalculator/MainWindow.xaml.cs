@@ -139,29 +139,32 @@ namespace MyCalculator
                     }
                     return;
                 }
-                else if (tx1.Text.EndsWith("/ "))
+                if (tx2.Text == string.Empty)
                 {
-                    tx1.Text = tx1.Text.Replace("/", button.Content.ToString());
-                    tx2.Text = "";
-                    return;
-                }
-                else if (tx1.Text.EndsWith("- "))
-                {
-                    tx1.Text = tx1.Text.Replace("-", button.Content.ToString());
-                    tx2.Text = "";
-                    return;
-                }
-                else if (tx1.Text.EndsWith("+ "))
-                {
-                    tx1.Text = tx1.Text.Replace("+", button.Content.ToString());
-                    tx2.Text = "";
-                    return;
-                }
-                else if (tx1.Text.EndsWith("* "))
-                {
-                    tx1.Text = tx1.Text.Replace("*", button.Content.ToString());
-                    tx2.Text = "";
-                    return;
+                    if (tx1.Text.EndsWith("/ "))
+                    {
+                        tx1.Text = tx1.Text.Replace("/", button.Content.ToString());
+                        tx2.Text = "";
+                        return;
+                    }
+                    else if (tx1.Text.EndsWith("- "))
+                    {
+                        tx1.Text = tx1.Text.Replace("-", button.Content.ToString());
+                        tx2.Text = "";
+                        return;
+                    }
+                    else if (tx1.Text.EndsWith("+ "))
+                    {
+                        tx1.Text = tx1.Text.Replace("+", button.Content.ToString());
+                        tx2.Text = "";
+                        return;
+                    }
+                    else if (tx1.Text.EndsWith("* "))
+                    {
+                        tx1.Text = tx1.Text.Replace("*", button.Content.ToString());
+                        tx2.Text = "";
+                        return;
+                    }
                 }
             }
             if (tx2.Text == string.Empty) return;

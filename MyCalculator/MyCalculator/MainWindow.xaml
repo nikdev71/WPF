@@ -15,7 +15,7 @@
             </LinearGradientBrush>
         </DockPanel.Background>
         <TextBox Name="tx1" Margin="0,5,0,2" IsEnabled="False" DockPanel.Dock="Top" HorizontalContentAlignment="Right" ></TextBox>
-        <TextBox Name="tx2" Margin="0,2,0,5" Height="50" DockPanel.Dock="Top" HorizontalContentAlignment="Right" FontSize="36" FontWeight="Bold"></TextBox>
+        <TextBox Name="tx2" Margin="0,2,0,5" Height="50" DockPanel.Dock="Top" HorizontalContentAlignment="Right" FontSize="36" FontWeight="Bold"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

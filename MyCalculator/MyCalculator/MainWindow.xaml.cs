@@ -32,10 +32,10 @@ namespace MyCalculator
         }
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (Regex.IsMatch(e.Key.ToString(), @"\d"))
+            if (Regex.IsMatch(e.Key.ToString(), @"^D[0-9]$"))
             {
                 tx2.Text += (char)('0' + (e.Key - Key.D0));
-                e.Handled = true;
+
             }
             if (e.Key == Key.Back)
             {
@@ -46,8 +46,9 @@ namespace MyCalculator
 
                 }
 
-                e.Handled = true;
             }
+            e.Handled = true;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -194,6 +195,11 @@ namespace MyCalculator
                 tx1.Text += " =";
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
 
         }
     }

@@ -1,0 +1,31 @@
+﻿<Window x:Class="NoteBook.Modif"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoteBook"
+        mc:Ignorable="d"
+        Title="Modif" Height="100" Width="500">
+    <Window.Resources>
+        <local:Persontemp x:Key="temp" name="" adress="" phone="" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource temp}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="14" HorizontalAlignment="Center">Fio</TextBlock>
+        <TextBlock Grid.Column="1" FontSize="14" HorizontalAlignment="Center">Adress</TextBlock>
+        <TextBlock Grid.Column="2" FontSize="14" HorizontalAlignment="Center">Phone</TextBlock>
+        <TextBox Name="fiomod" Grid.Row="1" FontSize="18"></TextBox>
+        <TextBox Name="adressmod" Grid.Row="1" Grid.Column="1" FontSize="18"></TextBox>
+        <TextBox Name="phonemod" Grid.Row="1" Grid.Column="12" FontSize="18"></TextBox>
+        <Button Content="Ok" Grid.Row="2" Grid.ColumnSpan="3" Click="Button_Click"></Button>
+    </Grid>
+</Window>

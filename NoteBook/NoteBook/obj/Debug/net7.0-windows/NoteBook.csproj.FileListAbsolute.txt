@@ -18,3 +18,9 @@ M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\refint\NoteBook
 M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\NoteBook.pdb
 M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\NoteBook.genruntimeconfig.cache
 M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\ref\NoteBook.dll
+M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\Modif.g.cs
+M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\Modif.baml
+M:\Проекты\WPF\NoteBook\NoteBook\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\NoteBook.csproj.AssemblyReference.cache
+M:\Проекты\WPF\NoteBook\NoteBook\obj\Debug\net7.0-windows\NoteBook.csproj.CopyComplete

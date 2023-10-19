@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="NoteBook" Height="450" Width="800">
     <Window.Resources>
+        <local:Person x:Key="lstperson" Name="None" Adress="None" Phone="None"/>
         <Style x:Key="menuitem" TargetType="MenuItem">
             <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="Foreground" Value="Navy"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -19,16 +21,16 @@
         </Grid.RowDefinitions>
         <Menu >
             <MenuItem Header="Файл" Style="{StaticResource menuitem}" >
-                <MenuItem Header="Сохранить" ></MenuItem>
-                <MenuItem Header="Загрузить" ></MenuItem>
+                <MenuItem Header="Сохранить" Click="Save" ></MenuItem>
+                <MenuItem Header="Загрузить" Click="Load" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Правка" Style="{StaticResource menuitem}">
-                <MenuItem Header="Добавить" ></MenuItem>
-                <MenuItem Header="Удалить" ></MenuItem>
-                <MenuItem Header="Изменить"></MenuItem>
+                <MenuItem Header="Добавить" Click="Add_person" ></MenuItem>
+                <MenuItem Header="Удалить" Click ="Delete_person" ></MenuItem>
+                <MenuItem Header="Изменить" Click="Modify_person"></MenuItem>
             </MenuItem>
         </Menu>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" DataContext="{StaticResource lstperson }" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -40,11 +42,12 @@
             <TextBlock FontSize="14" Margin="5,0,0,0"> ФИО </TextBlock>
             <TextBlock Grid.Column="2" FontSize="14" >Адресс</TextBlock>
             <TextBlock Grid.Column="4" FontSize="14">Телефон</TextBlock>
-            <TextBox Grid.Column="1" MinHeight="20" Margin="15,0"></TextBox>
-            <TextBox Grid.Column="3" MinHeight="20" Margin="15,0"></TextBox>
-            <TextBox Grid.Column="5" MinHeight="20" Margin="15,0"></TextBox>
+            <TextBox Name="fio" Grid.Column="1" MinHeight="20" Margin="15,0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Name="adress" Grid.Column="3" MinHeight="20" Margin="15,0" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Name="phone" Grid.Column="5" MinHeight="20" Margin="15,0" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
-        <ListBox Grid.Row="2">
+        <ListBox Grid.Row="2" x:Name="listbox" DataContext="{StaticResource lstperson}" ItemsSource="{Binding people}" 
+                 SelectedIndex="{Binding  Index_selected_listbox, Mode=TwoWay}" SelectionChanged="listBox1_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="FontSize" Value="18"></Setter>
@@ -58,7 +61,6 @@
                     </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
-            <ListBoxItem>Person</ListBoxItem>
         </ListBox>
     </Grid>
 </Window>

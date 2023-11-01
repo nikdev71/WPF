@@ -1,0 +1,66 @@
+﻿<Window x:Class="NoteBook.Modif"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoteBook"
+        mc:Ignorable="d"
+        Title="Modif" Height="100" Width="500">
+    <Window.Resources>
+        <local:Persontemp x:Key="temp" name="" adress="" phone="" />
+        <Style x:Key="grad">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Offset="0" Color="Black" />
+                        <GradientStop Offset="1" Color="Gold" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="btn">
+            <Style.Setters>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Offset="0" Color="Black" />
+                            <GradientStop Offset="1" Color="Gold" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Control.Foreground" Value="Black" />
+                </Trigger>
+                
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource temp}">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <GradientStop Offset="0" Color="Black" />
+                <GradientStop Offset="1" Color="Gold" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  FontSize="14" Foreground="White" HorizontalAlignment="Center">Fio</TextBlock>
+        <TextBlock Grid.Column="1" Foreground="White" FontSize="14" HorizontalAlignment="Center">Adress</TextBlock>
+        <TextBlock Grid.Column="2" Foreground="White" FontSize="14" HorizontalAlignment="Center">Phone</TextBlock>
+        <TextBox Background="Black" Foreground="White" Name="fiomod" Grid.Row="1" FontSize="18"></TextBox>
+        <TextBox Background="Black" Foreground="White" Name="adressmod" Grid.Row="1" Grid.Column="1" FontSize="18"></TextBox>
+        <TextBox Background="Black" Foreground="White" Name="phonemod" Grid.Row="1" Grid.Column="12" FontSize="18"></TextBox>
+        <Button  Style="{StaticResource btn}" Content="Ok" Grid.Row="2" Grid.ColumnSpan="3" Click="Button_Click"></Button>
+    </Grid>
+</Window>

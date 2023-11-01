@@ -10,17 +10,57 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 using System.IO;
+using System.Xml.Linq;
+using NoteBook.Model;
 
 namespace NoteBook.ViewModel
 {
     class MainViewModel : DependencyObject
     {
+        private static readonly DependencyProperty NameProperty;
+        private static readonly DependencyProperty AdressProperty;
+        private static readonly DependencyProperty PhoneProperty;
+        private static readonly DependencyProperty SelectedIndexProperty;
+        private static readonly DependencyProperty PersonsProperty;
         static MainViewModel()
         {
             NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(MainViewModel));
             AdressProperty = DependencyProperty.Register("Adress", typeof(string), typeof(MainViewModel));
             PhoneProperty = DependencyProperty.Register("Phone", typeof(string), typeof(MainViewModel));
             SelectedIndexProperty = DependencyProperty.Register("SelectedIndex", typeof(int), typeof(MainViewModel), new PropertyMetadata(-1));
+            PersonsProperty = DependencyProperty.Register("Persons", typeof(ObservableCollection<Person>),typeof(MainViewModel));
+        }
+        public MainViewModel()
+        {
+            Name = "";
+            Adress = "";
+            Phone = "";
+            Persons =new ObservableCollection<Person>();
+        }
+        public int SelectedIndex
+        {
+            get { return (int)GetValue(SelectedIndexProperty); }
+            set { SetValue(SelectedIndexProperty, value); }
+        }
+        public string Name
+        {
+            get { return (string)GetValue(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }
+        public string Adress
+        {
+            get { return (string)GetValue(AdressProperty); }
+            set { SetValue(AdressProperty, value); }
+        }
+        public string Phone
+        {
+            get { return (string)GetValue(PhoneProperty); }
+            set { SetValue(PhoneProperty, value); }
+        }
+        public ObservableCollection<Person> Persons
+        {
+            get { return (ObservableCollection<Person>)GetValue(PersonsProperty); }
+            set { SetValue(PersonsProperty, value); }
         }
         #region Add Person
         MyCommand addPerson;
@@ -39,8 +79,7 @@ namespace NoteBook.ViewModel
         {
             if (Name != null && Adress != null && Phone != null)
             {
-                string item = Name + "   " + Adress + "   " + Phone;
-                people.Add(item);
+                Persons.Add(new Person() { Name = this.Name, Adress = this.Adress,Phone = this.Phone });
                 Name = null;
                 Adress = null;
                 Phone = null;
@@ -70,7 +109,7 @@ namespace NoteBook.ViewModel
         }
         private void Delete_person()
         {
-            people.Remove(people[SelectedIndex]);
+            Persons.Remove(Persons[SelectedIndex]);
             Name = null;
             Adress = null;
             Phone = null;
@@ -101,12 +140,12 @@ namespace NoteBook.ViewModel
         }
         private void SaveCommand_Executed()
         {
-            string json = JsonConvert.SerializeObject(people);
+            string json = JsonConvert.SerializeObject(Persons);
             File.WriteAllText("people.json", json);
         }
         private bool SaveCommand_CanExecute()
         {
-            if (people.Count == 0) return false;
+            if (Persons.Count == 0) return false;
             else return true;
         }
         #endregion
@@ -133,11 +172,11 @@ namespace NoteBook.ViewModel
                 try
                 {
                     string json = File.ReadAllText(filePath);
-                    ObservableCollection<string> peopleList = JsonConvert.DeserializeObject<ObservableCollection<string>>(json);
-                    people.Clear();
-                    foreach (var item in peopleList)
+                    ObservableCollection<Person> peopleList = JsonConvert.DeserializeObject<ObservableCollection<Person>>(json);
+                    Persons.Clear();
+                    foreach (Person item in peopleList)
                     {
-                        people.Add(item);
+                        Persons.Add(item);
                     }
                 }
                 catch (Exception ex)
@@ -183,9 +222,8 @@ namespace NoteBook.ViewModel
                 {
                     if (window.person.name != string.Empty && window.person.adress != string.Empty && window.person.phone != string.Empty)
                     {
-                        string newItem = window.person.name + "   " + window.person.adress + "   " + window.person.phone;
-                        people.RemoveAt(SelectedIndex);
-                        people.Add(newItem);
+                        Persons.RemoveAt(SelectedIndex);
+                        Persons.Add(new Person() { Name = window.person.name, Adress = window.person.adress, Phone = window.person.phone });
                     }
                     else
                     {
@@ -205,7 +243,7 @@ namespace NoteBook.ViewModel
             {
                 return false;
             }
-            else return true; 
+            else return true;
         }
         #endregion
 
@@ -226,42 +264,14 @@ namespace NoteBook.ViewModel
         {
             if (SelectedIndex == -1)
                 return;
-            string[] arr = people[SelectedIndex].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            Name = arr[0];
-            Adress = arr[1];
-            Phone = arr[2];
-        }
+            Name = Persons[SelectedIndex].Name;
+            Adress = Persons[SelectedIndex].Adress;
+            Phone = Persons[SelectedIndex].Phone;
+        }   
         #endregion
 
-        #region Dependency Object
-        private static readonly DependencyProperty NameProperty;
-        private static readonly DependencyProperty AdressProperty;
-        private static readonly DependencyProperty PhoneProperty;
-        private static readonly DependencyProperty SelectedIndexProperty;
 
-        public ObservableCollection<string> people { get; set; } = new ObservableCollection<string>();
-
-        public int SelectedIndex
-        {
-            get { return (int)GetValue(SelectedIndexProperty); }
-            set { SetValue(SelectedIndexProperty, value); }
-        }
-        public string Name
-        {
-            get { return (string)GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
-        }
-        public string Adress
-        {
-            get { return (string)GetValue(AdressProperty); }
-            set { SetValue(AdressProperty, value); }
-        }
-        public string Phone
-        {
-            get { return (string)GetValue(PhoneProperty); }
-            set { SetValue(PhoneProperty, value); }
-        }
-        #endregion
+       
     }
 }
 

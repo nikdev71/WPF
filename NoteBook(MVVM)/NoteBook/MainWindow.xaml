@@ -63,7 +63,7 @@
             <TextBox Name="adress" Background="Black"  Foreground="Gold" Grid.Column="3" MinHeight="20" Margin="15,0" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBox Name="phone" Background="Black"  Foreground="Gold" Grid.Column="5" MinHeight="20" Margin="15,0" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
-        <ListBox Grid.Row="2" x:Name="listbox" Style="{StaticResource lststyle}" ItemsSource="{Binding people}" 
+        <ListBox Grid.Row="2" x:Name="listbox" Style="{StaticResource lststyle}" ItemsSource="{Binding Persons}" 
                  SelectedIndex="{Binding  SelectedIndex, Mode=TwoWay}" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

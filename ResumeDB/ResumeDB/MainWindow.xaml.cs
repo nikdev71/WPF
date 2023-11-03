@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResumeDB.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace ResumeDB
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel MVM;
         public MainWindow()
         {
             InitializeComponent();
+            MVM = new MainViewModel();
+            DataContext = MVM;
+        }
+
+
+        private void Save_Close(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MVM != null)
+            {
+                MVM.Save();
+            }
         }
     }
 }

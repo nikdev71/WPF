@@ -4,9 +4,108 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResumeDB"
+        xmlns:local1="clr-namespace:ResumeDB.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" SizeToContent="WidthAndHeight"  MinHeight="300" MinWidth="740"  Closing="Save_Close" >
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Courier New" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#C0C0C0"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Courier New" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Foreground" Value="#C0C0C0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Courier New"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="#C0C0C0"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="#000080"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#000080"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#4B0082" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Заполните анкету резюме" Margin="10 5" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ScrollViewer Grid.Row="1">
+            <StackPanel  Margin="20" >
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10" HorizontalAlignment="Stretch">
+                <TextBlock Text="Имя: "  VerticalAlignment="Center" />
+                    <TextBox Margin="10 0 0 0"  Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Фамилия: " VerticalAlignment="Center" />
+                    <TextBox Margin="10 0 0 0"  Text="{Binding Surname,UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Email: "  VerticalAlignment="Center" />
+                    <TextBox Margin="10 0 0 0"   Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Должность: "  VerticalAlignment="Center" />
+                    <TextBox Margin="10 0 0 0"   Text="{Binding Post,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Опыт работы: "  VerticalAlignment="Center" />
+                    <TextBox Margin="10 0 0 0"  Text="{Binding JE,UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding CPP,UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Margin="5" Text="C++"  VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <CheckBox  VerticalAlignment="Center"  IsChecked="{Binding CSharp,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Margin="5" Text="C#"  VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <CheckBox VerticalAlignment="Center"  IsChecked="{Binding Unity,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Margin="5"  Text="Unity"  VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <CheckBox VerticalAlignment="Center"  IsChecked="{Binding WPF,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Margin="5"  Text="WPF"  VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <CheckBox VerticalAlignment="Center"  IsChecked="{Binding SQL,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Margin="5"  Text="SQL"  VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Отправить" Command="{Binding AddResume}"  Width="100" Height="30" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button Content="Очистить" Command="{Binding Clear}" Width="100" Height="30" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <ComboBox  SelectedIndex="{Binding  SelectedIndex, Mode=TwoWay}" Margin="10" MinWidth="200" Height="30" VerticalAlignment="Center" ItemsSource="{Binding Resumes}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  FontSize="18" FontFamily="Courier New" Margin="10,0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Surname}" Foreground="DarkBlue"></TextBlock>
+                            <TextBlock FontSize="18" FontFamily="Courier New" Margin="10,0" VerticalAlignment="Center" Grid.Column="0" Text="{Binding Name}" Foreground="DarkBlue"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel>
+            <Button Command="{Binding ReviewResume}" Content="Просмотреть резюме"  Margin="10,5" Padding="4"></Button>
+            <Button Command="{Binding DeleteResume}" Content="Удалить резюме из БД"  Margin="10,5" Padding="4"></Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

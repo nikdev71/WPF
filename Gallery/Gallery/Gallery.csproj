@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\1.jpg" />
+    <None Remove="img\3.jpg" />
+    <None Remove="img\4.jpg" />
+    <None Remove="img\5.jpg" />
+    <None Remove="img\6.jpg" />
+    <None Remove="img\7.jpg" />
+    <None Remove="img\8.jpg" />
+    <None Remove="img\9.jpg" />
+    <None Remove="img\bernd-dittrich-7TsXhBu-uuQ-unsplash.jpg" />
+    <None Remove="img\jaromir-kalina-_4jsk7uwFo8-unsplash.jpg" />
+    <None Remove="img\neom-9hWJs7iblh8-unsplash.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\5.jpg" />
+    <Resource Include="img\6.jpg" />
+    <Resource Include="img\9.jpg" />
+    <Resource Include="img\bernd-dittrich-7TsXhBu-uuQ-unsplash.jpg" />
+    <Resource Include="img\jaromir-kalina-_4jsk7uwFo8-unsplash.jpg" />
+    <Resource Include="img\neom-9hWJs7iblh8-unsplash.jpg" />
+  </ItemGroup>
+
+</Project>

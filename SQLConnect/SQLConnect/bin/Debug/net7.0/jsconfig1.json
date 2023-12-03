@@ -1,0 +1,14 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "ConnectionStrings": {
+    "ConnectionString": "Server=DESKTOP-N59N10D\\SQLEXPRESS;Database=world_big;User=nikita;Password=20031119nikita;"
+
+  }
+}
